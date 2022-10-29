@@ -26,13 +26,13 @@ PLAYLIST = sys.argv[1]
 def downloadVideo(inlink):
     ydl_opts = {    # Options for download
         'format': 'bestaudio/best',
-        'ignoreerrors': True,
+        'ignoreerrors': True,           # Ingores odd errors that are produced by the library
         'no_warnings': True,
         'ignoreerrors': True,
         'quiet': True,
         'postprocessors': [{
-            'key': 'FFmpegExtractAudio',
-            'preferredcodec': 'mp3',
+            'key': 'FFmpegExtractAudio',# codec used
+            'preferredcodec': 'mp3',    # Extracts in mp3
             'preferredquality': '192'
         }]
     }
