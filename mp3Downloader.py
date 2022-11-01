@@ -15,6 +15,7 @@ def downloadVideo(inlink):
         'ignoreerrors': True,           # Ingores odd errors that are produced by the library
         'no_warnings': True,
         'ignoreerrors': True,
+        'download_archive': 'archive.txt',
         'quiet': False,
         'postprocessors': [{
             'key': 'FFmpegExtractAudio',# codec used
