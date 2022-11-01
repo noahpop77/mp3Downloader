@@ -28,7 +28,7 @@ def downloadVideo(inlink):
 # Argument parser for the values that we will pass in to the program
 parser = argparse.ArgumentParser(description='Process Downloader options')
 parser.add_argument('--path',
-                    help='Save location for songs')
+                    help='Save location for songs Ex. --path ')
 parser.add_argument('--playlist',
                     help='Link to the playlist that will be downloaded')
 args = parser.parse_args()
