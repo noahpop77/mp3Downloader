@@ -41,10 +41,14 @@ def downloadVideo(inlink):
 
 # Options for webdriver
 options = webdriver.ChromeOptions()
+options.binary_location = "/home/sawa/Documents/devenv/ytMG/chromedriverLinux"
+chrome_driver_binary = "/home/sawa/Documents/devenv/ytMG/chromedriverLinux"
 options = Options()
 options.headless = True
 # Webdriver setup. Uses chrome driver manager service now instead of chromedriver exe
-driver = webdriver.Chrome(options=options, service=Service(ChromeDriverManager().install()))
+#driver = webdriver.Chrome(options=options, service=Service(ChromeDriverManager().install()))
+
+driver = webdriver.Chrome("/home/sawa/Documents/devenv/ytMG/chromedriverLinux", options=options)
 # Link that is passed to webdriver
 print(f"\033[1;36mDownloading from:\033[0;0m {PLAYLIST}")
 driver.get(PLAYLIST)
@@ -78,17 +82,17 @@ title = ""
 # Sets an iterator for the list of strings from the page
 iterElements = iter(elements)
 # Loops through all elements to find specifier for title
-try: 
-    while True:
+#try: 
+while True:
+    item = next(iterElements)
+    if item.text == "PLAY ALL":
         item = next(iterElements)
-        if item.text == "PLAY ALL":
-            item = next(iterElements)
-            title = item.text
-            break
-except(StopIteration):
-    print("Nothing Found....")
-    print("The playlist may be private.")
-    exit(0)
+        title = item.text
+        break
+#except(StopIteration):
+#    print("Nothing Found....")
+#    print("The playlist may be private.")
+#    exit(0)
 
 print(f"\033[1;36mDOWNLOADING PLAYLIST: {title}...\033[0;0m")
 
