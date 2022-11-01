@@ -32,18 +32,22 @@ parser.add_argument('--path',
 parser.add_argument('--playlist',
                     help='Link to the playlist that will be downloaded')
 args = parser.parse_args()
-#args.playlist
-#args.path
+#reference argument with args.playlist
+#reference argument with args.path
 
 
 try:
+    # Makes new directory according to the input supplied by command line arguments
     playlist_dir_name = args.path
     parent_dir = os.getcwd()
     playlist_dir = os.path.join(parent_dir, playlist_dir_name)
     os.mkdir(playlist_dir)
+# Error catch to see if file directory exists
 except FileExistsError:
     print("Directory exists...\nWriting to existing directory...")
 
+# Changes working dir to newly made directory
 os.chdir(playlist_dir)
 
+# Initiates the download
 downloadVideo(args.playlist)
